@@ -12,15 +12,11 @@ public class Tester {
 		int[] accountNumbers = {711, 982, 301, 221};
 		
 		for (int i = 0; i < accountNumbers.length; i++) {
-			
 			double balance = 0;
 			if (accountNumbers[i] > 300) balance = 15000;
-			
 			firstBankofJava.addAccount(new BankAccount(accountNumbers[i], balance));
 		}
-		
-		double minimum = 2000;
-		System.out.println(firstBankofJava.count(minimum));
+		System.out.println(firstBankofJava.average());
 	}
 }
 

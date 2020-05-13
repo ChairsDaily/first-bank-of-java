@@ -42,14 +42,29 @@ public class Bank {
 	 * @param double (atLeast) minimum value for an account to be counted
 	 * @return the number of accounts who satisfy 
 	 */
-	public int count (double atLeast) {
+	public ArrayList<BankAccount> count (double atLeast) {
 		
-		int matches = 0;
+		ArrayList<BankAccount> matches = new ArrayList<BankAccount>();
+		
 		for (BankAccount a : accounts) {
-			
-			if (a.getBalance() >= atLeast) matches++;
+			if (a.getBalance() >= atLeast) matches.add(a);
 		}
 		return matches;
+	}
+	
+	/*
+	 * Gets the average balance discarding those
+	 * less than the minimum
+	 * @return double (average) see above
+	 */
+	public double average () {
+		
+		ArrayList<BankAccount> matches = count(globalMinimum);
+		double average = 0;
+		
+		for (BankAccount b : matches) average = average + b.getBalance();
+		
+		return (int) average / matches.size();
 	}
 	
 	/*
@@ -87,6 +102,7 @@ public class Bank {
 	}
 	
 	private ArrayList<BankAccount> accounts;
+	private final double globalMinimum = 2000;
 }
 
 
